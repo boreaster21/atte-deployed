@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('command:restartwork')->dailyAt('23:59:59');
+        // $schedule->command('command:restartwork')->everyMinute();
     }
 
     /**
@@ -29,4 +30,7 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+    protected $commands = [
+        Commands\RestartWork::Class,
+    ];
 }

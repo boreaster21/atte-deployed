@@ -1,0 +1,178 @@
+.header__nav {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: auto;
+}
+
+.nav__list-item {
+    margin-left: 3vw;
+
+}
+
+.nav__list-item a {
+    display: block;
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    height: 2vw;
+    font-size: 1.3vw;
+}
+
+.button-logout {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+    display: block;
+    font-size: 1.3vw;
+    font-weight: bold;
+}
+
+
+.content {
+    margin: 0 auto;
+    padding: 3vw 1.5vw 10vw;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1vw;
+    text-align: center;
+    font-size: 1.3vw;
+}
+
+.heading h2 {
+    margin: auto 1vw;
+}
+
+.serch {
+    width: 30vw;
+    margin: auto;
+    margin-bottom: 1vw;
+}
+
+.search-form {
+    height: 2vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #777777;
+    border-radius: 3px;
+}
+
+.search-form input {
+    width: 25vw;
+    height: 100%;
+    padding: 5px 15px;
+    border: none;
+    box-sizing: border-box;
+    font-size: 1em;
+    outline: none;
+}
+::placeholder {
+    text-align: center;
+}
+
+.search-form input::placeholder {
+    color: #777777;
+}
+
+.search-form button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 45px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.search-form button::after {
+    width: 24px;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z' fill='%23777777'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    content: '';
+}
+
+
+
+.roaster_list {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: solid 1px #778ca3;
+}
+
+.roaster_list-head,
+.roaster_list-item {
+    padding: 10px;
+    border-bottom: solid 1px #778ca3;
+}
+
+.roaster_button{
+    width: 30vw;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+}
+
+
+.page {
+    text-align: center;
+    margin: auto;
+    
+}
+.pagination{
+    text-decoration: none;
+    list-style: none;
+    
+
+}
+
+.pagination li{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    list-style: none;
+}
+
+.pagination li.active{
+    background-color: blue;
+    color: white;
+    border: 1px solid blue;
+}
+
+.pagination li:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.pagination li:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.pagination li:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

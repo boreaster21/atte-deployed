@@ -162,6 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class, //追加
+
         /*
          * Package Service Providers...
          */
