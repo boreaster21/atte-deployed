@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Work;
 use App\Models\Date;
 use App\Models\User;
+use App\Models\Keyword;
 use Carbon\Carbon;
 
 class AtteController extends Controller
@@ -263,7 +264,7 @@ class AtteController extends Controller
       $last_day = date('Y-m-d', strtotime($Request->day . '-1 day'));
       $dates = Work::latest('finished_at')->where('work_on', $last_day)->paginate(5);
       $day = $last_day;
-      Date::where('id', 1)->update([
+      Date::first()->update([
         'target' => $last_day,
       ]);
 
@@ -275,7 +276,7 @@ class AtteController extends Controller
       $next_day = date('Y-m-d', strtotime($Request->day . '1 day'));
       $dates = Work::latest('finished_at')->where('work_on', $next_day)->paginate(5);
       $day = $next_day;
-      Date::where('id', 1)->update([
+      Date::first()->update([
         'target' => $next_day,
       ]);
 
@@ -284,7 +285,7 @@ class AtteController extends Controller
     // ページリクエストがあったら ※ページネーションのリロード対策
     elseif ($Request->page) {
       $users = User::get();
-      $day = Date::find(1)->target;
+      $day = Date::first()->target;
       $dates = Work::latest('finished_at')->where('work_on', $day)->paginate(5);
 
       return view('date', compact('users', 'dates', 'day'))->with('message', '今日');
@@ -294,13 +295,13 @@ class AtteController extends Controller
       $users = User::get();
       $day = Carbon::today()->format('Y-m-d');
       //ページめくった後に戻ってきたパターン
-      if (Date::where('id', 1)->first()) {
-        Date::where('id', 1)->update([
+      if (Date::first()) {
+        Date::first()->update([
           'target' => $day,
         ]);
       }
       //初めて/dateに来たパターン（テーブルにデータがない）
-      elseif (Date::where('id', 1)->first() == null) {
+      elseif (Date::first() == null) {
         Date::create([
           'target' => $day,
         ]);
@@ -311,18 +312,43 @@ class AtteController extends Controller
   }
   public function users(REQUEST $request)
   {
-    if($request->keyword){
+    
+    //検索した場合
+    if($request->keyword)
+    {
       $users = User::KeywordSearch($request->keyword)->paginate(5);
+      //
+      if(empty(Keyword::first())){
+        Keyword::create([
+          'keyword' => $request->keyword,
+        ]);
+      }
+      else{
+        Keyword::first()->update([
+          'keyword' => $request->keyword,
+        ]);
+      }
+      
+      return view('users', compact('users'));
+    } 
+    //ページネーションクリック場合
+    elseif ($request->page) 
+    {
+      $keyword = Keyword::first()->keyword;
+      $users = User::KeywordSearch($keyword)->paginate(5);
       return view('users', compact('users'));
     }
-    else{
+    //初めて/usersに来たパターン
+    else 
+    {
       $users = User::paginate(5);
       return view('users', compact('users'));
     }
-    
   }
+
   public function parsonal(REQUEST $request)
   {
+
     if ($request->serch) {
       $user_id = $request->user_id;
       $user_name = $request->user_name;
@@ -339,8 +365,8 @@ class AtteController extends Controller
       return view('parsonal', compact('records', 'user_name', 'user_id', 'year', 'month'));
     }
     else{
-      $user_id = Auth::user()->id;
-      $user_name = Auth::user()->name;
+      $user_id = $request->user_id;
+      $user_name = $request->user_name;
       $records = work::where('user_id', Auth::user()->id)->paginate(5);
       return view('parsonal', compact('records', 'user_name', 'user_id',));
     }

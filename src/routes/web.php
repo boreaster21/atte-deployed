@@ -18,31 +18,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return redirect('/login');});
 
-Route::get('/attendance', [AtteController::class, 'index'])->middleware('auth');
-Route::get('/users', [AtteController::class, 'users'])->middleware('auth');
-// Route::post('/users', [AtteController::class, 'users'])->middleware('auth');
+Route::get('/attendance', [AtteController::class, 'index'])->middleware('verified');
+Route::get('/users', [AtteController::class, 'users'])->middleware('verified');
 
-Route::get('/parsonal', [AtteController::class, 'parsonal'])->middleware('auth');
-Route::post('/parsonal', [AtteController::class, 'parsonal'])->middleware('auth');
+Route::get('/parsonal', [AtteController::class, 'parsonal'])->middleware('verified');
+Route::post('/parsonal', [AtteController::class, 'parsonal'])->middleware('verified');
 
-Route::get('/date', [AtteController::class, 'showdate'])->middleware('auth');
-Route::post('/date', [AtteController::class, 'showdate'])->middleware('auth');
+Route::get('/date', [AtteController::class, 'showdate'])->middleware('verified');
+Route::post('/date', [AtteController::class, 'showdate'])->middleware('verified');
 
-Route::post('/startwork', [AtteController::class, 'startwork'])->middleware('auth');;
-Route::post('/finishwork', [AtteController::class, 'finishwork'])->middleware('auth');;
-Route::post('/startrest', [AtteController::class, 'startrest'])->middleware('auth');;
-Route::post('/finishrest', [AtteController::class, 'finishrest'])->middleware('auth');;
+Route::post('/startwork', [AtteController::class, 'startwork'])->middleware('verified');
+Route::post('/finishwork', [AtteController::class, 'finishwork'])->middleware('verified');
+Route::post('/startrest', [AtteController::class, 'startrest'])->middleware('verified');
+Route::post('/finishrest', [AtteController::class, 'finishrest'])->middleware('verified');
 
-Route::get('/search', [AtteController::class, 'search']);
+Route::get('/search', [AtteController::class, 'search'])->middleware('verified');;
 
-Route::get('/mail', [MailSendController::class, 'index']);
+Route::get('/mail', [MailSendController::class, 'index'])->middleware('verified');;
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified'])->group(function () {
+    Route::get('/dashboard', function () {return view('dashboard');})->name('dashboard');
 });
