@@ -15,7 +15,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('command:restartwork')->dailyAt('23:59:59');
+	    $schedule->command('command:restartwork')
+	      ->timezone('Asia/Tokyo')
+	      ->sendOutputTo(storage_path('logs/disk.log'))
+	      ->emailOutputTo('assessmenter001@gmail.com')
+	      ->dailyAt('23:59:59');
         // $schedule->command('command:restartwork')->everyMinute();
     }
 
