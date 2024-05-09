@@ -34,8 +34,8 @@ git version 2.40.1<br>
 #Userテーブル
 
 id | type
--|-|-
-id	unsigned bigint
+-|-
+id | unsigned bigint 
 name | string
 email | string
 email_verified_at | timestamp
@@ -46,11 +46,35 @@ two_factor_recovery_codes | timestamp
 created_at | timestamp
 updated_at | timestamp
 
+#Userテーブル
 id | type
 -|-
-id | unsigned bigint | 北海道
-name | string | 沖縄
+id | unsigned bigint 
+name | string
+email | string
+email_verified_at | timestamp
+password | string
+rememberToken | rememberToken
+two_factor_secret |  	
+two_factor_recovery_codes | timestamp
+created_at | timestamp
+updated_at | timestamp
 
+
+#workテーブル
+id | type
+-|-
+id | unsigned bigint
+user_id | unsigned bigint
+start_at | time
+fnished_at | time
+total_work | int
+start_rest | time
+finished_rest | time
+total_rest | int
+work_on | date
+created_at | timestamp
+updated_at | timestamp
 
 ## 環境構築
 実行用コマンド
