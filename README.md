@@ -31,8 +31,7 @@ git version 2.40.1<br>
 ![image](https://github.com/boreaster21/fortify/assets/155618258/5f4f2e26-6102-4900-add8-4098775f1390)
 
 ## テーブル設計
-#Userテーブル
-
+#Usersテーブル
 id | type
 -|-
 id | unsigned bigint 
@@ -46,22 +45,7 @@ two_factor_recovery_codes | timestamp
 created_at | timestamp
 updated_at | timestamp
 
-#Userテーブル
-id | type
--|-
-id | unsigned bigint 
-name | string
-email | string
-email_verified_at | timestamp
-password | string
-rememberToken | rememberToken
-two_factor_secret |  	
-two_factor_recovery_codes | timestamp
-created_at | timestamp
-updated_at | timestamp
-
-
-#workテーブル
+#worksテーブル
 id | type
 -|-
 id | unsigned bigint
@@ -73,6 +57,22 @@ start_rest | time
 finished_rest | time
 total_rest | int
 work_on | date
+created_at | timestamp
+updated_at | timestamp
+
+#datesテーブル
+id | type
+-|-
+id | unsigned bigint
+target | date
+created_at | timestamp
+updated_at | timestamp
+
+#keywordssテーブル
+id | type
+-|-
+id | unsigned bigint
+keyword | string
 created_at | timestamp
 updated_at | timestamp
 
