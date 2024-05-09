@@ -6,10 +6,7 @@
 なぜ作成したか：人事評価のため
 
 ## URL
-デプロイのURL
-注意事項など
-
-
+http://52.195.217.115
 
 ## 機能一覧
 会員登録機能<br>
@@ -17,23 +14,27 @@
 ログアウト機能<br>
 メール認証機能<br>
 打刻機能（勤務開始/終了、休憩開始/終了）<br>
+日跨ぎ自動打刻機能<br>
 日付別勤怠情報取得機能<br>
 ユーザー検索機能<br>
 ページネーション機能<br>
 
 ## 使用技術
-php<br>
-Laravel8<br>
-docker<br>
-nginx<br>
-MySQL<br>
-GitHub<br>
-言語やフレームワークバージョンなど<br>
+PHP 8.2.15<br>
+Laravel Framework 8.83.27<br>
+Docker version 25.0.3,<br>
+nginx/1.24.0<br>
+mysql  Ver 8.0.37<br>
+git version 2.40.1<br>
 
 ## ER図
 ![image](https://github.com/boreaster21/fortify/assets/155618258/5f4f2e26-6102-4900-add8-4098775f1390)
 
 ## テーブル設計
+名前 | 年齢 | 出身地
+-|-|-
+佐々木 | 24 | 北海道
+渡辺 | 32 | 沖縄
 
 ## 環境構築
 実行用コマンド
