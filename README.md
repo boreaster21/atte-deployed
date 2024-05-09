@@ -31,10 +31,19 @@ git version 2.40.1<br>
 ![image](https://github.com/boreaster21/fortify/assets/155618258/5f4f2e26-6102-4900-add8-4098775f1390)
 
 ## テーブル設計
-名前 | 年齢 | 出身地
+#Userテーブル
+id | type | 
 -|-|-
-佐々木 | 24 | 北海道
-渡辺 | 32 | 沖縄
+id	unsigned bigint
+name | string
+email | string
+email_verified_at | timestamp
+password | string
+rememberToken | rememberToken
+two_factor_secret |  	
+two_factor_recovery_codes | timestamp
+created_at | timestamp
+updated_at | timestamp
 
 ## 環境構築
 実行用コマンド
