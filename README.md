@@ -33,7 +33,7 @@ git version 2.40.1<br>
 ## テーブル設計
 #Userテーブル
 
-id | type | 
+id | type
 -|-|-
 id	unsigned bigint
 name | string
@@ -45,6 +45,12 @@ two_factor_secret |
 two_factor_recovery_codes | timestamp
 created_at | timestamp
 updated_at | timestamp
+
+id | type
+-|-
+id | unsigned bigint | 北海道
+name | string | 沖縄
+
 
 ## 環境構築
 実行用コマンド
