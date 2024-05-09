@@ -32,6 +32,7 @@ git version 2.40.1<br>
 
 ## テーブル設計
 #Userテーブル
+
 id | type | 
 -|-|-
 id	unsigned bigint
